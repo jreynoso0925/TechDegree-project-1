@@ -28,14 +28,30 @@ var quotes = [
     source: "Chinese Proverb"
   }
 ];
-
+var html;
 var quote;
 
- // this function grabs a quote from the 'quotes' array by using the Math.random() method to grab a number and multiply it by the array's length, and rounding the number down in order to select the index of the array
+ // this function grabs a quote from the 'quotes' array by using the Math.random() method to grab a number and multiply it by the array's length, and rounding the number down in order to select an index of the array
 function getRandomQuote(array){
   var number = Math.floor(Math.random() * array.length);
-  quote = quotes[number]['quote'];
+  quote = quotes[number];
   return quote;
 }
 
-console.log(getRandomQuote(quotes));
+//this function puts the getRandomQuote function into a variable in order to grab an object from the quotes array.
+//it then adds the html tags and the object's properties, depending on whether or not the quote has the property it is asking for.
+function printQuote(){
+  var quoteObject = getRandomQuote(quotes);
+  html = '<p class="quote">' + quoteObject.quote + '</p>';
+  html += '<p class="source">' + quoteObject.source;
+  if (quoteObject.citation !== undefined){
+    html += '<span class="citation"> '+ quoteObject.citation + ' </span>';
+  }
+  if (quoteObject.year !== undefined){
+    html += '<span class="year">' + quoteObject.year + ' </span>';}
+  html += '</p>';
+  document.getElementById('quote-box').innerHTML = html;
+}
+
+//calling the function insures that a quote is loaded onto the page before pressing the button for the first time
+printQuote();
