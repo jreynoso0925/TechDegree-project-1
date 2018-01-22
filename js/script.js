@@ -48,7 +48,8 @@ function printQuote(){
     html += '<span class="citation"> '+ quoteObject.citation + ' </span>';
   }
   if (quoteObject.year !== undefined){
-    html += '<span class="year">' + quoteObject.year + ' </span>';}
+    html += '<span class="year">' + quoteObject.year + ' </span>';
+  }
   html += '</p>';
   document.getElementById('quote-box').innerHTML = html;
 }
